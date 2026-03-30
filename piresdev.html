@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matheus Pires — Engenheiro de Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ─── DARK THEME (default) ─── */
+  [data-theme="dark"] {
+    --bg:       #05080F;
+    --bg2:      #0A0E1A;
+    --bg3:      #0F1525;
+    --surface:  #141B2E;
+    --surface2: #1A2340;
+    --blue:     #00AAFF;
+    --blue2:    #0066CC;
+    --gold:     #F0A030;
+    --gold2:    #C07818;
+    --white:    #E8EDF5;
+    --muted:    #6B7A99;
+    --border:   rgba(0,170,255,0.12);
+    --border2:  rgba(0,170,255,0.22);
+    --glow:     0 0 30px rgba(0,170,255,0.15);
+    --nav-bg:   rgba(5,8,15,0.85);
+    --grid-color: rgba(0,170,255,0.03);
+    --text-body: rgba(232,237,245,0.75);
+    --text-dim:  rgba(232,237,245,0.6);
+    --shadow-card: none;
+    --scrollbar-track: #05080F;
+    --theme-icon-sun: block;
+    --theme-icon-moon: none;
+  }
+
+  /* ─── LIGHT THEME ─── */
+  [data-theme="light"] {
+    --bg:       #F4F6FB;
+    --bg2:      #EAEFF8;
+    --bg3:      #DDE4F0;
+    --surface:  #FFFFFF;
+    --surface2: #F0F4FC;
+    --blue:     #0077DD;
+    --blue2:    #0055AA;
+    --gold:     #C07000;
+    --gold2:    #946000;
+    --white:    #1A1F2E;
+    --muted:    #6B7A99;
+    --border:   rgba(0,100,200,0.12);
+    --border2:  rgba(0,100,200,0.22);
+    --glow:     0 4px 24px rgba(0,100,200,0.12);
+    --nav-bg:   rgba(244,246,251,0.92);
+    --grid-color: rgba(0,100,200,0.04);
+    --text-body: rgba(26,31,46,0.75);
+    --text-dim:  rgba(26,31,46,0.6);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+    --scrollbar-track: #F4F6FB;
+    --theme-icon-sun: none;
+    --theme-icon-moon: block;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ─── GRID BG ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    transition: background-image 0.3s;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── CURSOR GLOW ─── */
+  #cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,170,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(24px, 5vw, 80px);
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  nav.scrolled { border-color: var(--border2); }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(20px, 3vw, 40px);
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 1px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+  .theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+  [data-theme="light"] .icon-sun { display: block; }
+  [data-theme="light"] .icon-moon { display: none; }
+
+  .nav-cta {
+    padding: 8px 20px;
+    border: 1px solid var(--blue);
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--blue); color: var(--bg); }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px clamp(24px, 5vw, 80px) 60px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-name .line2 { color: var(--blue); }
+
+  .hero-typing {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    color: var(--muted);
+    margin-bottom: 32px;
+    min-height: 1.5em;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-typing .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--blue);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+
+  .btn-outline {
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* Hero Visual */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeLeft 1s 0.6s forwards;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+    box-shadow: var(--shadow-card);
+  }
+  .stat-card:hover {
+    border-color: var(--border2);
+    transform: translateX(-4px);
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--blue);
+    min-width: 60px;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .stat-label strong { color: var(--white); display: block; font-weight: 400; font-size: 0.9rem; }
+
+  .hero-location {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .dot-live {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #30E090;
+    box-shadow: 0 0 8px #30E090;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    position: relative;
+    z-index: 2;
+    padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+  }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 520px;
+    margin-bottom: 56px;
+  }
+
+  /* ─── SOBRE ─── */
+  #sobre { background: var(--bg2); }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .sobre-text p {
+    color: var(--text-body);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .sobre-text p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .sobre-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+
+  .sobre-lang {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-name { font-weight: 400; font-size: 0.95rem; }
+  .lang-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .lang-bar {
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .lang-bar-fill {
+    height: 100%;
+    background: var(--blue);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  }
+  .lang-bar-fill.animated { }
+
+  .sobre-contact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-top: 20px;
+    box-shadow: var(--shadow-card);
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row:hover { color: var(--white); }
+  .contact-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 14px; height: 14px; fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ─── EXPERIÊNCIA ─── */
+  #experiencia { background: var(--bg); }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--blue) 0%, transparent 100%);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 56px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0,170,255,0.15);
+  }
+
+  .timeline-current::before {
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(240,160,48,0.2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .job-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .job-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+  .job-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    text-transform: uppercase;
+  }
+  .job-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .job-period.current {
+    border-color: rgba(240,160,48,0.3);
+    color: var(--gold);
+  }
+
+  .job-bullets {
+    margin-top: 16px;
+    list-style: none;
+  }
+  .job-bullets li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--text-body);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .job-bullets li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.75rem;
+    top: 2px;
+  }
+
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  /* ─── HABILIDADES ─── */
+  #habilidades { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.2s;
+    box-shadow: var(--shadow-card);
+  }
+  .skill-category.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .skill-category:hover { border-color: var(--border2); }
+
+  .skill-cat-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .skill-cat-name::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold2), transparent);
+  }
+
+  .skill-bar-item {
+    margin-bottom: 14px;
+  }
+  .skill-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .skill-bar-track {
+    height: 3px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue2), var(--blue));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ─── PROJETOS PESSOAIS ─── */
+  #projetos-pessoais { background: var(--bg3); }
+
+  .personal-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 28px;
+  }
+
+  .personal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.25s, box-shadow 0.25s;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+  }
+  .personal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .personal-card:hover {
+    border-color: var(--border2);
+    box-shadow: var(--glow);
+  }
+
+  .personal-card-screenshot {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg3);
+  }
+  .personal-card-screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.5s ease;
+  }
+  .personal-card:hover .personal-card-screenshot img {
+    transform: scale(1.04);
+  }
+
+  .personal-card-body {
+    padding: 24px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .personal-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .personal-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .personal-card-desc {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .personal-card-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  /* ─── PROJETOS PROFISSIONAIS ─── */
+  #projetos { background: var(--bg); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-card);
+  }
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-card:hover {
+    border-color: var(--border2);
+    box-shadow: var(--glow);
+  }
+
+  .project-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--blue);
+    opacity: 0.5;
+  }
+  .project-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    color: var(--white);
+  }
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .project-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  /* ─── EDUCAÇÃO ─── */
+  #educacao { background: var(--bg2); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    border-radius: 4px;
+    padding: 28px;
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.2s;
+    box-shadow: var(--shadow-card);
+  }
+  .edu-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .edu-card:hover { border-color: var(--border2); border-left-color: var(--gold); }
+
+  .edu-degree {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .edu-inst {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .edu-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+  .edu-type {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* ─── FOOTER / CONTATO ─── */
+  #contato {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 80px clamp(24px, 5vw, 80px);
+  }
+  .footer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    letter-spacing: 0.08em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .footer-title span { color: var(--blue); }
+  .footer-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 48px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .footer-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-link:hover { color: var(--blue); }
+  .footer-link svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  ::-webkit-scrollbar-thumb { background: var(--blue2); border-radius: 2px; }
+
+  /* ─── MOBILE NAV MENU ─── */
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-mobile-menu a:hover { color: var(--blue); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { flex-direction: row; flex-wrap: wrap; }
+    .stat-card { flex: 1; min-width: 140px; }
+    .sobre-grid { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .burger { display: flex; }
+    .personal-projects-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-visual { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .personal-projects-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SELECTION ─── */
+  ::selection { background: rgba(0,170,255,0.25); color: var(--white); }
+
+  /* ─── DIVIDER ─── */
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+    margin-bottom: 48px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor glow -->
+<div id="cursor-glow"></div>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">MP<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#habilidades">Skills</a></li>
+    <li><a href="#projetos-pessoais">Projetos</a></li>
+    <li><a href="#educacao">Educação</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar modo claro/escuro">
+      <!-- Sun icon (shown in dark mode to switch to light) -->
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <!-- Moon icon (shown in light mode to switch to dark) -->
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <a href="mailto:matheus.lpiress@gmail.com" class="nav-cta">Contato</a>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#experiencia" onclick="toggleMenu()">Experiência</a>
+  <a href="#habilidades" onclick="toggleMenu()">Skills</a>
+  <a href="#projetos-pessoais" onclick="toggleMenu()">Projetos</a>
+  <a href="#educacao" onclick="toggleMenu()">Educação</a>
+  <a href="mailto:matheus.lpiress@gmail.com" onclick="toggleMenu()">Contato</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1 class="hero-name">
+        MATHEUS<br>
+        <span class="line2">PIRES</span>
+      </h1>
+      <div class="hero-typing">
+        <span id="typed-text"></span><span class="cursor"></span>
+      </div>
+      <p class="hero-desc">
+        Engenheiro de Software com <strong>8+ anos</strong> de experiência em desenvolvimento fullstack, sistemas embarcados e infraestrutura cloud. Especializado em arquiteturas orientadas a eventos, clean architecture, observabilidade e IA aplicada.
+      </p>
+      <div class="hero-actions">
+        <a href="#projetos-pessoais" class="btn-primary">Ver Projetos</a>
+        <a href="#experiencia" class="btn-outline">Experiência</a>
+      </div>
+      <div class="hero-location" style="margin-top: 32px; opacity: 0; animation: fadeUp 0.8s 1.2s forwards;">
+        <div class="dot-live"></div>
+        São Paulo, Brasil · BTG Pactual
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">
+          <strong>Anos de Experiência</strong>
+          Fullstack · Embedded · Cloud
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">
+          <strong>Empresas Relevantes</strong>
+          BTG Pactual · TecToy · PAX
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">
+          <strong>Tecnologias Core</strong>
+          C++ · .NET · AWS · Vue · Python · AI
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">
+          <strong>Projetos Pessoais</strong>
+          SaaS · ERP · IA · Landing Pages
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="section-tag">// 01 — sobre</div>
+    <h2 class="section-title">QUEM SOU EU</h2>
+    <div class="section-divider"></div>
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <p>
+          Sou <strong>Engenheiro de Software</strong> com sólida experiência em desenvolvimento fullstack, sistemas embarcados e infraestrutura cloud. Atualmente atuando no <strong>BTG Pactual</strong>, um dos maiores bancos de investimento da América Latina, na consolidação de dados <strong>onshore e offshore</strong>.
+        </p>
+        <p>
+          Minha trajetória une mundos distintos: do baixo nível de <strong>C/C++ em dispositivos embarcados e terminais de pagamento</strong> — com implementações de protocolos SSL/TLS, comunicação AT e integrações de firmware — até a camada cloud com <strong>AWS Lambda, mensageria RabbitMQ/SQS/IBM MQ</strong> e interfaces modernas em Vue e TypeScript.
+        </p>
+        <p>
+          Apaixonado por <strong>clean architecture, MCP servers e agentes de IA</strong>. Desenvolvo soluções completas com boas práticas de testes (pytest, Vitest), observabilidade (Grafana, Datadog) e ferramentas modernas do ecossistema Python como <strong>FastAPI, Polars e Poetry</strong>.
+        </p>
+        <div class="sobre-chips">
+          <span class="chip">Event-Driven Architecture</span>
+          <span class="chip">Clean Architecture</span>
+          <span class="chip">Sistemas Embarcados</span>
+          <span class="chip">Fintech</span>
+          <span class="chip">AWS Serverless</span>
+          <span class="chip">MCP & AI Agents</span>
+          <span class="chip">Observabilidade</span>
+          <span class="chip">Onshore / Offshore</span>
+        </div>
+      </div>
+      <div>
+        <div class="sobre-lang reveal">
+          <div class="lang-item">
+            <div style="flex:1">
+              <div class="lang-name">Português</div>
+              <div class="lang-bar"><div class="lang-bar-fill" data-width="1"></div></div>
+            </div>
+            <div class="lang-level">Nativo</div>
+          </div>
+          <div class="lang-item">
+            <div style="flex:1">
+              <div class="lang-name">Inglês</div>
+              <div class="lang-bar"><div class="lang-bar-fill" data-width="0.75"></div></div>
+            </div>
+            <div class="lang-level">B2 · Professional</div>
+          </div>
+        </div>
+        <div class="sobre-contact reveal">
+          <a class="contact-row" href="mailto:matheus.lpiress@gmail.com">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            </div>
+            matheus.lpiress@gmail.com
+          </a>
+          <a class="contact-row" href="tel:11930342036">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            +55 (11) 93034-2036
+          </a>
+          <div class="contact-row" style="cursor:default">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            São Paulo, Brasil · 27 anos
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section id="experiencia">
+  <div class="section-inner">
+    <div class="section-tag">// 02 — experiência</div>
+    <h2 class="section-title">TRAJETÓRIA</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item timeline-current">
+        <div class="job-header">
+          <div>
+            <div class="job-company">BTG Pactual</div>
+            <div class="job-title">DESENVOLVEDOR FULLSTACK SÊNIOR</div>
+          </div>
+          <div class="job-period current">05/2024 — atual</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Consolidação de dados <strong>onshore e offshore</strong> na principal plataforma de relatórios de performance do banco.</li>
+          <li>Desenvolveu APIs e serviços orientados a eventos, otimizando fluxos de mensageria com RabbitMQ, Amazon SQS e IBM MQ.</li>
+          <li>Responsável por manutenção e desenvolvimento de sistema legado com SQL Server, VB6 e .NET.</li>
+          <li>Atuação em projetos de billing e family office do banco.</li>
+          <li>Desenvolvimento de plataforma de disponibilização de relatórios de performance com foco em AWS Lambda, Vue, Quasar, TypeScript e endpoints Python.</li>
+          <li>Implementação de nova identidade visual da principal plataforma de consolidação de relatórios, atuando diretamente com time de UI/UX.</li>
+          <li>Desenvolvimento de SSR e middlewares para integração BFF com transmissão via fila e streaming, incluindo sistema de roles por nível de acesso.</li>
+        </ul>
+        <div class="job-tags">
+          <span class="tag">RabbitMQ</span><span class="tag">IBM MQ</span><span class="tag">Amazon SQS</span>
+          <span class="tag">AWS Lambda</span><span class="tag">Vue.js</span><span class="tag">TypeScript</span>
+          <span class="tag">Python</span><span class="tag">.NET / C#</span><span class="tag">SQL Server</span>
+          <span class="tag">Puppeteer</span><span class="tag">Datadog</span><span class="tag">SSR</span>
+          <span class="tag">FastAPI</span><span class="tag">Polars</span><span class="tag">Poetry</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-company">PAX BR / TecToy</div>
+            <div class="job-title">DESENVOLVEDOR MOBILE PLENO</div>
+          </div>
+          <div class="job-period">12/2021 — 05/2024</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Responsável por desenvolvimento de soluções para dispositivos embarcados em C e C++, atuando diretamente com Linux Kernel.</li>
+          <li>Implementação de fluxos de telecomunicação com comandos AT e interações diretas com firmwares de grandes fabricantes, para testes laboratoriais.</li>
+          <li>Desenvolvimento de soluções criptográficas com OpenSSL (SSL/TLS) para terminais de pagamento.</li>
+          <li>Melhoria de fluxos transacionais de pagamentos, atuando com grandes players do mercado (ABECS).</li>
+          <li>Desenvolvimento de aplicativo funcional de pagamento para terminais Linux usando C, LVGL e biblioteca curl.</li>
+        </ul>
+        <div class="job-tags">
+          <span class="tag">C</span><span class="tag">C++14</span><span class="tag">Linux Kernel</span>
+          <span class="tag">OpenSSL</span><span class="tag">SSL/TLS</span><span class="tag">LVGL</span>
+          <span class="tag">AT Commands</span><span class="tag">Embedded Systems</span><span class="tag">ABECS</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div>
+            <div class="job-company">CIA Atlética</div>
+            <div class="job-title">ASSISTENTE DE TI</div>
+          </div>
+          <div class="job-period">02/2018 — 03/2021</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Gerenciamento da infraestrutura da empresa, incluindo rotinas de backups e automação com Shell Script.</li>
+          <li>Desenvolvimento e gerenciamento de sistemas internos em VB e C#, com procedures e jobs SQL.</li>
+        </ul>
+        <div class="job-tags">
+          <span class="tag">VB</span><span class="tag">C#</span><span class="tag">SQL</span>
+          <span class="tag">Shell Script</span><span class="tag">Infraestrutura</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-inner">
+    <div class="section-tag">// 03 — habilidades</div>
+    <h2 class="section-title">STACK TÉCNICA</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Linguagens</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>C / C++14</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>C# / .NET</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.9"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>TypeScript / JavaScript</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.87"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Python (FastAPI, Polars, Poetry)</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Java</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.68"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Frameworks & Libs</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Vue.js / Quasar / Nuxt</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Node.js</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>React</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.72"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>.NET / Spring</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>OpenSSL</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.8"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Cloud & Mensageria</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>AWS Lambda / S3 / Athena</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>RabbitMQ</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.9"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>IBM MQ</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Amazon SQS / AppSync</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Azure Repos / Pipelines</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.75"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Bancos de Dados</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>PostgreSQL / SQL Server</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.88"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>MongoDB</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.75"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>DynamoDB</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.72"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Redis</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.7"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Cassandra / MariaDB</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.65"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Observabilidade & Ops</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Datadog</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Grafana</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.78"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Jenkins / CI·CD</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.78"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Linux / Shell Script</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.88"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Testes & Qualidade</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>pytest (unitários Python)</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Vitest (frontend automatizado)</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.75"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Clean Architecture</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>MCP Servers & AI Skills</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.8"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Microservices</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.84"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-name">Embedded & Telecom</div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Linux Kernel</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Protocolos AT / Firmware</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.82"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>SSL/TLS / OpenSSL</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.8"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>LVGL (UI Embedded)</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.72"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Terminais POS / ABECS</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="0.78"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS PESSOAIS -->
+<section id="projetos-pessoais">
+  <div class="section-inner">
+    <div class="section-tag">// 04 — projetos pessoais</div>
+    <h2 class="section-title">CRIAÇÕES PRÓPRIAS</h2>
+    <div class="section-divider"></div>
+    <div class="personal-projects-grid">
+
+      <div class="personal-card">
+        <div class="personal-card-screenshot">
+          <img src="tonaescola.png" alt="Tô na Escola — App de controle de frequência escolar">
+        </div>
+        <div class="personal-card-body">
+          <div class="personal-card-label">SaaS · EdTech · Computer Vision</div>
+          <div class="personal-card-title">TÔ NA ESCOLA</div>
+          <p class="personal-card-desc">
+            Sistema de controle de frequência escolar com <strong>reconhecimento facial via OpenCV</strong>, eliminando chamadas manuais e reduzindo falhas de registro. Traz um <strong>BI interativo completo</strong> para que escolas e prefeituras acompanhem presença, evasão e vulnerabilidade por turma, período e tipo de ensino, com exportação em PDF e CSV.
+          </p>
+          <div class="personal-card-stack">
+            <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">FastAPI</span>
+            <span class="tag">Vue.js</span><span class="tag">PostgreSQL</span><span class="tag">Chart.js</span>
+            <span class="tag">Reconhecimento Facial</span><span class="tag">BI Interativo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="personal-card">
+        <div class="personal-card-screenshot">
+          <img src="anatomy.png" alt="AnatomyIA — Assistente inteligente para estudantes de medicina">
+        </div>
+        <div class="personal-card-body">
+          <div class="personal-card-label">SaaS · HealthTech · IA</div>
+          <div class="personal-card-title">ANATOMYIA</div>
+          <p class="personal-card-desc">
+            Agente de IA especializado em medicina para apoio a estudantes. Permite questionar sobre tópicos clínicos, enviar imagens de exames para análise, montar anamneses SOAP completas e treinar com <strong>simulados baseados em CRM, ENAMED, ENARM e REVALIDA</strong>. Conta com sistema de licença e integração com checkout da InfinityPay.
+          </p>
+          <div class="personal-card-stack">
+            <span class="tag">LLM Agent</span><span class="tag">Python</span><span class="tag">FastAPI</span>
+            <span class="tag">Vue.js</span><span class="tag">InfinityPay</span><span class="tag">RAG</span>
+            <span class="tag">Anamnese SOAP</span><span class="tag">Simulados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="personal-card">
+        <div class="personal-card-screenshot">
+          <img src="simplatec.png" alt="Simplatec — ERP modular para gestão de negócios">
+        </div>
+        <div class="personal-card-body">
+          <div class="personal-card-label">SaaS · ERP · Fintech</div>
+          <div class="personal-card-title">SIMPLATEC</div>
+          <p class="personal-card-desc">
+            ERP modular completo para pequenas e médias empresas: <strong>fluxo de caixa, emissão de cupom fiscal, controle de estoque, PDV/caixa, módulo financeiro, ordens de serviço e dashboard interativo</strong> com visão consolidada do negócio. Arquitetura multi-tenant com gestão modular por estabelecimento.
+          </p>
+          <div class="personal-card-stack">
+            <span class="tag">Node.js</span><span class="tag">Vue.js</span><span class="tag">PostgreSQL</span>
+            <span class="tag">NF-e</span><span class="tag">Multi-tenant</span><span class="tag">Dashboard</span>
+            <span class="tag">Fluxo de Caixa</span><span class="tag">Estoque</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="personal-card">
+        <div class="personal-card-screenshot">
+          <img src="gocabral.png" alt="Go Cabral — Landing page de agência de turismo">
+        </div>
+        <div class="personal-card-body">
+          <div class="personal-card-label">Web · Landing Page · Turismo</div>
+          <div class="personal-card-title">GO CABRAL</div>
+          <p class="personal-card-desc">
+            Landing page institucional desenvolvida em <strong>HTML e CSS puros</strong> para agência de turismo. Design moderno com paleta amarela vibrante, tipografia bold e seções para roteiros, histórias, artigos e reportagens. Foco em conversão com CTAs de WhatsApp e roteiros personalizados.
+          </p>
+          <div class="personal-card-stack">
+            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Responsive</span>
+            <span class="tag">Landing Page</span><span class="tag">UI Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS PROFISSIONAIS -->
+<section id="projetos">
+  <div class="section-inner">
+    <div class="section-tag">// 05 — projetos profissionais</div>
+    <h2 class="section-title">PROJETOS DESTACADOS</h2>
+    <div class="section-divider"></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <div class="project-title">PLATAFORMA DE RELATÓRIOS DE PERFORMANCE</div>
+        <div class="project-company">BTG Pactual</div>
+        <p class="project-desc">Nova identidade visual da principal plataforma de consolidação de relatórios do banco, desenvolvida em colaboração direta com o time de UI/UX. Consolidação onshore e offshore.</p>
+        <div class="project-stack">
+          <span class="tag">Vue.js</span><span class="tag">Quasar</span><span class="tag">TypeScript</span><span class="tag">AWS Lambda</span><span class="tag">Python</span><span class="tag">Polars</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-title">ENGINE DE GERAÇÃO DE RELATÓRIOS (PDF)</div>
+        <div class="project-company">BTG Pactual</div>
+        <p class="project-desc">Implementação e otimização do fluxo da Lambda responsável por gerar relatórios via Puppeteer-core com Chromium, integrado ao Datadog para monitoramento de métricas.</p>
+        <div class="project-stack">
+          <span class="tag">AWS Lambda</span><span class="tag">Puppeteer</span><span class="tag">Chromium</span><span class="tag">Datadog</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <div class="project-title">MIGRAÇÃO E OTIMIZAÇÃO DE MENSAGERIA IBM MQ</div>
+        <div class="project-company">BTG Pactual</div>
+        <p class="project-desc">Implementação de fluxo de mensageria com alternância dinâmica entre múltiplos QueueManagers do IBM MQ, respeitando ordem de execução de tasks e threads em C#/.NET.</p>
+        <div class="project-stack">
+          <span class="tag">IBM MQ</span><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Threading</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <div class="project-title">MONITOR DE FILAS RABBITMQ</div>
+        <div class="project-company">BTG Pactual</div>
+        <p class="project-desc">Script Python de monitoramento de filas RabbitMQ com gerenciamento e armazenamento de mensagens em SQL para análise quantitativa, auxiliando migrações e descomissionamento.</p>
+        <div class="project-stack">
+          <span class="tag">Python</span><span class="tag">RabbitMQ</span><span class="tag">Pika</span><span class="tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">05</div>
+        <div class="project-title">SSR E MIDDLEWARES PARA BFF</div>
+        <div class="project-company">BTG Pactual</div>
+        <p class="project-desc">Implementação de Server-Side Rendering e middlewares para integração BFF com transmissão via fila e streaming sem bufferização, incluindo sistema de roles por nível de acesso.</p>
+        <div class="project-stack">
+          <span class="tag">SSR</span><span class="tag">Node.js</span><span class="tag">Middleware</span><span class="tag">Streaming</span><span class="tag">RBAC</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">06</div>
+        <div class="project-title">FLUXO DE INSERÇÃO DE CHAVES CRIPTOGRÁFICAS</div>
+        <div class="project-company">TecToy / PAX</div>
+        <p class="project-desc">Novo fluxo fabril de inserção de chaves de criptografia em terminais de pagamento com protocolos SSL/TLS via OpenSSL, eliminando necessidade de validação em processo produtivo.</p>
+        <div class="project-stack">
+          <span class="tag">C++14</span><span class="tag">C</span><span class="tag">OpenSSL</span><span class="tag">SSL/TLS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">07</div>
+        <div class="project-title">APP DE PAGAMENTO PARA TESTES DE TELECOM</div>
+        <div class="project-company">TecToy / PAX</div>
+        <p class="project-desc">Aplicativo funcional de pagamento para terminais Linux com biblioteca Setis (normas ABECS), módulos de telecomunicação, interface LVGL e fluxo completo de transação em C.</p>
+        <div class="project-stack">
+          <span class="tag">C</span><span class="tag">LVGL</span><span class="tag">ABECS</span><span class="tag">curl</span><span class="tag">OpenSSL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">08</div>
+        <div class="project-title">CAMADA DE ABSTRAÇÃO PARA GRANDES PLAYERS</div>
+        <div class="project-company">TecToy / PAX</div>
+        <p class="project-desc">Desenvolvimento e homologação de projetos para terminais Linux, atuando na camada de abstração utilizada por grandes players do mercado de meios de pagamento.</p>
+        <div class="project-stack">
+          <span class="tag">C</span><span class="tag">C++</span><span class="tag">Linux</span><span class="tag">HAL</span><span class="tag">POS</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCAÇÃO -->
+<section id="educacao">
+  <div class="section-inner">
+    <div class="section-tag">// 06 — educação</div>
+    <h2 class="section-title">FORMAÇÃO</h2>
+    <div class="section-divider"></div>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="edu-inst">PUC Minas</div>
+        <div class="edu-degree">ESPECIALIZAÇÃO EM ENGENHARIA DE SOFTWARE</div>
+        <div class="edu-year">Conclusão: Fevereiro / 2024</div>
+        <div class="edu-type">Pós-graduação · Presença nacional</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-inst">FATEC Carapicuíba</div>
+        <div class="edu-degree">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</div>
+        <div class="edu-year">Conclusão: Setembro / 2022</div>
+        <div class="edu-type">Graduação Tecnológica</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-inst">ETEC de Cotia</div>
+        <div class="edu-degree">REDES DE COMPUTADORES</div>
+        <div class="edu-year">Conclusão: Julho / 2017</div>
+        <div class="edu-type">Ensino Técnico</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / FOOTER -->
+<section id="contato">
+  <div class="footer-title reveal">VAMOS <span>CONSTRUIR</span><br>ALGO JUNTOS?</div>
+  <p class="footer-sub reveal">Disponível para projetos fullstack, consultoria em arquitetura de sistemas e oportunidades no setor financeiro e tech.</p>
+  <div class="footer-links reveal">
+    <a href="mailto:matheus.lpiress@gmail.com" class="footer-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      E-mail
+    </a>
+    <a href="tel:11930342036" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Telefone
+    </a>
+    <a href="https://www.linkedin.com/in/matheus-pires-b90247149/" target="_blank" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/MattLPires" target="_blank" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
+  <div class="footer-copy">© 2026 Matheus Pires · São Paulo, Brasil</div>
+</section>
+
+<script>
+  // ─── CURSOR GLOW ───
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+
+  // ─── THEME TOGGLE ───
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'light' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  }
+  // Restore saved theme
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch(e){}
+
+  // ─── NAV SCROLL STATE ───
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ─── MOBILE MENU ───
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  // ─── TYPING ANIMATION ───
+  const roles = [
+    'Engenheiro de Software Fullstack',
+    'Especialista em Sistemas Embarcados',
+    'AWS & Cloud Architect',
+    'Event-Driven & Mensageria',
+    'Fintech & Meios de Pagamento',
+    'MCP Developer & AI Engineer',
+    'Clean Architecture Advocate',
+  ];
+  let roleIdx = 0, charIdx = 0, isDeleting = false;
+  const typedEl = document.getElementById('typed-text');
+
+  function type() {
+    const current = roles[roleIdx];
+    if (!isDeleting) {
+      typedEl.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        isDeleting = true;
+        setTimeout(type, 2200);
+        return;
+      }
+    } else {
+      typedEl.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        isDeleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+      }
+    }
+    setTimeout(type, isDeleting ? 45 : 75);
+  }
+  setTimeout(type, 1200);
+
+  // ─── INTERSECTION OBSERVER ───
+  const observerOpts = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
+
+  function animateOnVisible(selector, delay = 0, stagger = 0) {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), delay + i * stagger);
+          }
+        });
+      }, observerOpts).observe(el);
+    });
+  }
+
+  // Timeline items
+  animateOnVisible('.timeline-item', 0, 120);
+
+  // Skill bars
+  document.querySelectorAll('.skill-category').forEach((el, i) => {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => {
+            e.target.classList.add('visible');
+            e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+              bar.style.width = (parseFloat(bar.dataset.width) * 100) + '%';
+            });
+          }, i * 80);
+        }
+      });
+    }, observerOpts).observe(el);
+  });
+
+  // Lang bars
+  document.querySelectorAll('.lang-bar-fill').forEach(el => {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.width = (parseFloat(e.target.dataset.width) * 100) + '%';
+        }
+      });
+    }, { threshold: 0.5 }).observe(el);
+  });
+
+  // Project cards (professional)
+  animateOnVisible('.project-card', 0, 60);
+
+  // Personal project cards
+  animateOnVisible('.personal-card', 0, 80);
+
+  // Edu cards
+  animateOnVisible('.edu-card', 0, 120);
+
+  // Generic reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOpts).observe(el);
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s, transform 0.7s';
+  });
+</script>
+</body>
+</html>
