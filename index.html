@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matheus Pires — Engenheiro de Software</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ─── DARK THEME (default) ─── */
   [data-theme="dark"] {
@@ -65,11 +65,12 @@
   body {
     background: var(--bg);
     color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     transition: background 0.3s, color 0.3s;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ─── GRID BG ─── */
@@ -129,9 +130,10 @@
   nav.scrolled { border-color: var(--border2); }
 
   .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     font-size: 1.4rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.02em;
     color: var(--white);
     text-decoration: none;
   }
@@ -143,13 +145,12 @@
     list-style: none;
   }
   .nav-links a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     color: var(--muted);
     text-decoration: none;
-    text-transform: uppercase;
     transition: color 0.2s;
     position: relative;
   }
@@ -199,13 +200,13 @@
   .nav-cta {
     padding: 8px 20px;
     border: 1px solid var(--blue);
-    border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     color: var(--blue);
     text-decoration: none;
-    text-transform: uppercase;
     transition: background 0.2s, color 0.2s;
   }
   .nav-cta:hover { background: var(--blue); color: var(--bg); }
@@ -268,10 +269,11 @@
   }
 
   .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.9;
-    letter-spacing: 0.04em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
     margin-bottom: 24px;
     opacity: 0;
     animation: fadeUp 0.8s 0.4s forwards;
@@ -385,8 +387,9 @@
     transform: translateX(-4px);
   }
   .stat-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
     line-height: 1;
     color: var(--blue);
     min-width: 60px;
@@ -436,10 +439,11 @@
     margin-bottom: 12px;
   }
   .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    letter-spacing: 0.06em;
-    line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
     margin-bottom: 16px;
   }
   .section-sub {
@@ -524,7 +528,6 @@
     width: 0%;
     transition: width 1s cubic-bezier(0.4,0,0.2,1);
   }
-  .lang-bar-fill.animated { }
 
   .sobre-contact {
     background: var(--surface);
@@ -614,10 +617,11 @@
     margin-bottom: 8px;
   }
   .job-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.06em;
-    line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
   }
   .job-company {
     font-family: 'JetBrains Mono', monospace;
@@ -705,9 +709,10 @@
   .skill-category:hover { border-color: var(--border2); }
 
   .skill-cat-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
     color: var(--gold);
     margin-bottom: 20px;
     display: flex;
@@ -759,11 +764,11 @@
   .personal-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 12px;
     overflow: hidden;
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.5s, transform 0.5s, border-color 0.25s, box-shadow 0.25s;
+    transition: opacity 0.5s, transform 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.3s;
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
@@ -774,7 +779,8 @@
   }
   .personal-card:hover {
     border-color: var(--border2);
-    box-shadow: var(--glow);
+    box-shadow: var(--glow), 0 16px 48px rgba(0,0,0,0.22);
+    transform: translateY(-4px);
   }
 
   .personal-card-screenshot {
@@ -785,15 +791,24 @@
     border-bottom: 1px solid var(--border);
     background: var(--bg3);
   }
+  .personal-card-screenshot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .personal-card:hover .personal-card-screenshot::after { opacity: 1; }
   .personal-card-screenshot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
   }
   .personal-card:hover .personal-card-screenshot img {
-    transform: scale(1.04);
+    transform: scale(1.07);
   }
 
   .personal-card-body {
@@ -806,19 +821,31 @@
 
   .personal-card-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .personal-card-label::before {
+    content: '';
+    width: 18px;
+    height: 1px;
+    background: var(--gold);
   }
 
   .personal-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.06em;
-    line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
     color: var(--white);
+    transition: color 0.25s;
   }
+  .personal-card:hover .personal-card-title { color: var(--blue); }
 
   .personal-card-desc {
     color: var(--text-dim);
@@ -846,37 +873,75 @@
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 28px;
     display: flex;
     flex-direction: column;
     gap: 14px;
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.5s, transform 0.5s, border-color 0.2s, box-shadow 0.2s;
+    transition: opacity 0.5s, transform 0.45s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.3s;
     box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
   }
   .project-card.visible {
     opacity: 1;
     transform: translateY(0);
   }
+  /* Animated top accent line */
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    z-index: 2;
+  }
+  /* Diagonal shine sweep */
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: -60%; left: -60%;
+    width: 60%; height: 220%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.08), transparent);
+    transform: rotate(18deg) translateX(-120%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
   .project-card:hover {
     border-color: var(--border2);
-    box-shadow: var(--glow);
+    box-shadow: var(--glow), 0 12px 40px rgba(0,0,0,0.18);
   }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover::after { transform: rotate(18deg) translateX(320%); }
+  .project-card > * { position: relative; z-index: 2; }
 
   .project-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0;
     color: var(--blue);
-    opacity: 0.5;
+    opacity: 0.35;
+    line-height: 1;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .project-card:hover .project-num {
+    opacity: 0.9;
+    transform: translateX(2px);
   }
   .project-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.06em;
-    line-height: 1.1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     color: var(--white);
   }
   .project-desc {
@@ -887,19 +952,55 @@
   }
   .project-company {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.1em;
     color: var(--gold);
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 3px 10px;
+    border: 1px solid rgba(192,112,24,0.25);
+    border-radius: 20px;
+    background: rgba(192,112,24,0.06);
+  }
+  .project-company::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 6px var(--gold);
   }
   .project-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
   }
+  .project-card .tag,
+  .personal-card .tag {
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .project-card:hover .tag,
+  .personal-card:hover .tag {
+    border-color: var(--border2);
+  }
+  .project-stack .tag:hover,
+  .personal-card-stack .tag:hover {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
 
   /* ─── EDUCAÇÃO ─── */
-  #educacao { background: var(--bg2); }
+  #educacao {
+    background: var(--bg2);
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+  }
+  #educacao .section-inner { width: 100%; }
 
   .edu-grid {
     display: grid;
@@ -925,9 +1026,10 @@
   .edu-card:hover { border-color: var(--border2); border-left-color: var(--gold); }
 
   .edu-degree {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.25rem;
-    letter-spacing: 0.06em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
     line-height: 1.1;
     margin-bottom: 8px;
   }
@@ -955,12 +1057,18 @@
     background: var(--bg3);
     border-top: 1px solid var(--border);
     text-align: center;
-    padding: 80px clamp(24px, 5vw, 80px);
+    padding: 120px clamp(24px, 5vw, 80px) 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .contato-inner { max-width: 720px; width: 100%; }
   .footer-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
-    letter-spacing: 0.08em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5.5vw, 3.8rem);
+    letter-spacing: -0.02em;
     line-height: 1;
     margin-bottom: 16px;
   }
@@ -1002,6 +1110,100 @@
     letter-spacing: 0.1em;
   }
 
+  /* ─── CONTACT PAGE CARDS ─── */
+  .contato-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .contato-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  a.contato-card:hover {
+    border-color: var(--border2);
+    box-shadow: var(--glow), 0 12px 36px rgba(0,0,0,0.18);
+    transform: translateY(-3px);
+  }
+  .contato-card-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border2);
+    color: var(--blue);
+  }
+  .contato-card-icon svg {
+    width: 22px; height: 22px;
+    fill: none; stroke: currentColor;
+    stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .contato-card-body { flex: 1; min-width: 0; }
+  .contato-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .contato-card-value {
+    font-size: 1.05rem;
+    color: var(--white);
+    font-weight: 500;
+    word-break: break-word;
+  }
+  .contato-card-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  a.contato-card:hover .contato-card-cta { transform: translateX(4px); }
+
+  /* WhatsApp highlight card */
+  .contato-card-primary {
+    border-color: rgba(37,211,102,0.4);
+    background: linear-gradient(135deg, rgba(37,211,102,0.10), var(--surface) 60%);
+  }
+  .contato-card-primary .contato-card-icon {
+    border-color: rgba(37,211,102,0.5);
+    color: #25D366;
+    background: rgba(37,211,102,0.08);
+  }
+  .contato-card-primary .contato-card-cta { color: #25D366; }
+  a.contato-card-primary:hover {
+    border-color: #25D366;
+    box-shadow: 0 12px 40px rgba(37,211,102,0.25);
+  }
+
+  .contato-social {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
   /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -1041,9 +1243,10 @@
   }
   .nav-mobile-menu.open { display: flex; }
   .nav-mobile-menu a {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem;
-    letter-spacing: 0.12em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
     color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
@@ -1080,6 +1283,120 @@
     background: linear-gradient(90deg, var(--blue), transparent);
     margin-bottom: 48px;
   }
+
+  /* ─── SPA VIEW SYSTEM ─── */
+  .view {
+    display: none;
+    animation: viewIn 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .view.active { display: block; }
+
+  @keyframes viewIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Route transition curtain */
+  #route-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--blue);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    pointer-events: none;
+  }
+  #route-curtain.wipe {
+    animation: curtainWipe 0.6s cubic-bezier(0.7,0,0.3,1);
+  }
+  @keyframes curtainWipe {
+    0%   { transform: scaleY(0); transform-origin: bottom; }
+    45%  { transform: scaleY(1); transform-origin: bottom; }
+    55%  { transform: scaleY(1); transform-origin: top; }
+    100% { transform: scaleY(0); transform-origin: top; }
+  }
+
+  /* Scroll progress bar */
+  #scroll-progress {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+    z-index: 101;
+    transition: width 0.1s linear;
+  }
+
+  /* Active nav link */
+  .nav-links a.active { color: var(--blue); }
+  .nav-links a.active::after { transform: scaleX(1); }
+
+  /* ─── PROJECT FILTER TABS ─── */
+  .project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+  .filter-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--border2); color: var(--white); }
+  .filter-btn.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  .project-card.filtered-out {
+    display: none;
+  }
+
+  /* Magnetic tilt on cards */
+  .project-card, .personal-card {
+    will-change: transform;
+  }
+
+  /* Back-to-top / home floating button */
+  #fab-home {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    box-shadow: 0 6px 24px rgba(0,170,255,0.35);
+  }
+  #fab-home.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  #fab-home:hover { background: var(--blue2); }
+  #fab-home svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 </style>
 </head>
 <body>
@@ -1089,13 +1406,13 @@
 
 <!-- NAVBAR -->
 <nav id="nav">
-  <a href="#hero" class="nav-logo">MP<span>.</span></a>
+  <a href="#/home" data-route-link="home" class="nav-logo">MP<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#experiencia">Experiência</a></li>
-    <li><a href="#habilidades">Skills</a></li>
-    <li><a href="#projetos-pessoais">Projetos</a></li>
-    <li><a href="#educacao">Educação</a></li>
+    <li><a href="#/home" data-route-link="home">Início</a></li>
+    <li><a href="#/experiencia" data-route-link="experiencia">Experiência</a></li>
+    <li><a href="#/habilidades" data-route-link="habilidades">Skills</a></li>
+    <li><a href="#/projetos-pessoais" data-route-link="projetos-pessoais">Projetos</a></li>
+    <li><a href="#/educacao" data-route-link="educacao">Educação</a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema" aria-label="Alternar modo claro/escuro">
@@ -1104,7 +1421,7 @@
       <!-- Moon icon (shown in light mode to switch to dark) -->
       <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     </button>
-    <a href="mailto:matheus.lpiress@gmail.com" class="nav-cta">Contato</a>
+    <a href="#/contato" data-route-link="contato" class="nav-cta">Contato</a>
     <div class="burger" id="burger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -1113,13 +1430,20 @@
 
 <!-- Mobile menu -->
 <div class="nav-mobile-menu" id="mobile-menu">
-  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
-  <a href="#experiencia" onclick="toggleMenu()">Experiência</a>
-  <a href="#habilidades" onclick="toggleMenu()">Skills</a>
-  <a href="#projetos-pessoais" onclick="toggleMenu()">Projetos</a>
-  <a href="#educacao" onclick="toggleMenu()">Educação</a>
-  <a href="mailto:matheus.lpiress@gmail.com" onclick="toggleMenu()">Contato</a>
+  <a href="#/home" data-route-link="home" onclick="toggleMenu()">Início</a>
+  <a href="#/experiencia" data-route-link="experiencia" onclick="toggleMenu()">Experiência</a>
+  <a href="#/habilidades" data-route-link="habilidades" onclick="toggleMenu()">Skills</a>
+  <a href="#/projetos-pessoais" data-route-link="projetos-pessoais" onclick="toggleMenu()">Projetos</a>
+  <a href="#/educacao" data-route-link="educacao" onclick="toggleMenu()">Educação</a>
+  <a href="#/contato" data-route-link="contato" onclick="toggleMenu()">Contato</a>
 </div>
+
+<!-- ROUTE TRANSITION CURTAIN -->
+<div id="route-curtain"></div>
+<div id="scroll-progress"></div>
+
+<!-- ═══ VIEW: HOME ═══ -->
+<div class="view active" id="view-home" data-route="home">
 
 <!-- HERO -->
 <section id="hero">
@@ -1136,12 +1460,12 @@
         Engenheiro de Software com <strong>8+ anos</strong> de experiência em desenvolvimento fullstack, sistemas embarcados e infraestrutura cloud. Especializado em arquiteturas orientadas a eventos, clean architecture, observabilidade e IA aplicada.
       </p>
       <div class="hero-actions">
-        <a href="#projetos-pessoais" class="btn-primary">Ver Projetos</a>
-        <a href="#experiencia" class="btn-outline">Experiência</a>
+        <a href="#/projetos-pessoais" data-route-link="projetos-pessoais" class="btn-primary">Ver Projetos</a>
+        <a href="#/experiencia" data-route-link="experiencia" class="btn-outline">Experiência</a>
       </div>
       <div class="hero-location" style="margin-top: 32px; opacity: 0; animation: fadeUp 0.8s 1.2s forwards;">
         <div class="dot-live"></div>
-        São Paulo, Brasil · BTG Pactual
+        São Paulo, Brasil · Investment Banking
       </div>
     </div>
     <div class="hero-visual">
@@ -1155,8 +1479,8 @@
       <div class="stat-card">
         <div class="stat-number">3</div>
         <div class="stat-label">
-          <strong>Empresas Relevantes</strong>
-          BTG Pactual · TecToy · PAX
+          <strong>Setores de Atuação</strong>
+          Investment Banking · POS · Meios de Pagamento
         </div>
       </div>
       <div class="stat-card">
@@ -1180,13 +1504,13 @@
 <!-- SOBRE -->
 <section id="sobre">
   <div class="section-inner">
-    <div class="section-tag">// 01 — sobre</div>
+    <div class="section-tag">Sobre</div>
     <h2 class="section-title">QUEM SOU EU</h2>
     <div class="section-divider"></div>
     <div class="sobre-grid">
       <div class="sobre-text reveal">
         <p>
-          Sou <strong>Engenheiro de Software</strong> com sólida experiência em desenvolvimento fullstack, sistemas embarcados e infraestrutura cloud. Atualmente atuando no <strong>BTG Pactual</strong>, um dos maiores bancos de investimento da América Latina, na consolidação de dados <strong>onshore e offshore</strong>.
+          Sou <strong>Engenheiro de Software</strong> com sólida experiência em desenvolvimento fullstack, sistemas embarcados e infraestrutura cloud. Atualmente atuando em um dos <strong>maiores bancos de investimento da América Latina</strong>, na consolidação de dados <strong>onshore e offshore</strong>.
         </p>
         <p>
           Minha trajetória une mundos distintos: do baixo nível de <strong>C/C++ em dispositivos embarcados e terminais de pagamento</strong> — com implementações de protocolos SSL/TLS, comunicação AT e integrações de firmware — até a camada cloud com <strong>AWS Lambda, mensageria RabbitMQ/SQS/IBM MQ</strong> e interfaces modernas em Vue e TypeScript.
@@ -1247,10 +1571,15 @@
   </div>
 </section>
 
+</div><!-- /view-home -->
+
+<!-- ═══ VIEW: EXPERIÊNCIA ═══ -->
+<div class="view" id="view-experiencia" data-route="experiencia">
+
 <!-- EXPERIÊNCIA -->
 <section id="experiencia">
   <div class="section-inner">
-    <div class="section-tag">// 02 — experiência</div>
+    <div class="section-tag">Experiência</div>
     <h2 class="section-title">TRAJETÓRIA</h2>
     <div class="section-divider"></div>
     <div class="timeline">
@@ -1258,16 +1587,16 @@
       <div class="timeline-item timeline-current">
         <div class="job-header">
           <div>
-            <div class="job-company">BTG Pactual</div>
+            <div class="job-company">Instituição Financeira · Investment Banking</div>
             <div class="job-title">DESENVOLVEDOR FULLSTACK SÊNIOR</div>
           </div>
           <div class="job-period current">05/2024 — atual</div>
         </div>
         <ul class="job-bullets">
-          <li>Consolidação de dados <strong>onshore e offshore</strong> na principal plataforma de relatórios de performance do banco.</li>
-          <li>Desenvolveu APIs e serviços orientados a eventos, otimizando fluxos de mensageria com RabbitMQ, Amazon SQS e IBM MQ.</li>
-          <li>Responsável por manutenção e desenvolvimento de sistema legado com SQL Server, VB6 e .NET.</li>
-          <li>Atuação em projetos de billing e family office do banco.</li>
+          <li>Consolidação de dados <strong>onshore e offshore</strong> em plataforma de relatórios de performance de alto volume.</li>
+          <li>Desenvolveu APIs e serviços orientados a eventos, otimizando fluxos de mensageria assíncrona em larga escala.</li>
+          <li>Responsável por manutenção e evolução de sistemas legados com SQL Server, VB6 e .NET.</li>
+          <li>Atuação em projetos de billing e gestão de patrimônio (family office).</li>
           <li>Desenvolvimento de plataforma de disponibilização de relatórios de performance com foco em AWS Lambda, Vue, Quasar, TypeScript e endpoints Python.</li>
           <li>Implementação de nova identidade visual da principal plataforma de consolidação de relatórios, atuando diretamente com time de UI/UX.</li>
           <li>Desenvolvimento de SSR e middlewares para integração BFF com transmissão via fila e streaming, incluindo sistema de roles por nível de acesso.</li>
@@ -1284,16 +1613,16 @@
       <div class="timeline-item">
         <div class="job-header">
           <div>
-            <div class="job-company">PAX BR / TecToy</div>
+            <div class="job-company">Fabricante de Hardware de Pagamentos · POS</div>
             <div class="job-title">DESENVOLVEDOR MOBILE PLENO</div>
           </div>
           <div class="job-period">12/2021 — 05/2024</div>
         </div>
         <ul class="job-bullets">
           <li>Responsável por desenvolvimento de soluções para dispositivos embarcados em C e C++, atuando diretamente com Linux Kernel.</li>
-          <li>Implementação de fluxos de telecomunicação com comandos AT e interações diretas com firmwares de grandes fabricantes, para testes laboratoriais.</li>
-          <li>Desenvolvimento de soluções criptográficas com OpenSSL (SSL/TLS) para terminais de pagamento.</li>
-          <li>Melhoria de fluxos transacionais de pagamentos, atuando com grandes players do mercado (ABECS).</li>
+          <li>Implementação de fluxos de telecomunicação com comandos AT e integrações de firmware para testes laboratoriais.</li>
+          <li>Implementação de protocolos de segurança (SSL/TLS) com OpenSSL para terminais de pagamento.</li>
+          <li>Otimização de fluxos transacionais em conformidade com normas do setor (ABECS/PCI).</li>
           <li>Desenvolvimento de aplicativo funcional de pagamento para terminais Linux usando C, LVGL e biblioteca curl.</li>
         </ul>
         <div class="job-tags">
@@ -1325,10 +1654,15 @@
   </div>
 </section>
 
+</div><!-- /view-experiencia -->
+
+<!-- ═══ VIEW: HABILIDADES ═══ -->
+<div class="view" id="view-habilidades" data-route="habilidades">
+
 <!-- HABILIDADES -->
 <section id="habilidades">
   <div class="section-inner">
-    <div class="section-tag">// 03 — habilidades</div>
+    <div class="section-tag">Habilidades</div>
     <h2 class="section-title">STACK TÉCNICA</h2>
     <div class="section-divider"></div>
     <div class="skills-grid">
@@ -1501,10 +1835,15 @@
   </div>
 </section>
 
+</div><!-- /view-habilidades -->
+
+<!-- ═══ VIEW: PROJETOS ═══ -->
+<div class="view" id="view-projetos-pessoais" data-route="projetos-pessoais">
+
 <!-- PROJETOS PESSOAIS -->
 <section id="projetos-pessoais">
   <div class="section-inner">
-    <div class="section-tag">// 04 — projetos pessoais</div>
+    <div class="section-tag">Projetos Pessoais</div>
     <h2 class="section-title">CRIAÇÕES PRÓPRIAS</h2>
     <div class="section-divider"></div>
     <div class="personal-projects-grid">
@@ -1587,86 +1926,93 @@
 <!-- PROJETOS PROFISSIONAIS -->
 <section id="projetos">
   <div class="section-inner">
-    <div class="section-tag">// 05 — projetos profissionais</div>
+    <div class="section-tag">Projetos Profissionais</div>
     <h2 class="section-title">PROJETOS DESTACADOS</h2>
     <div class="section-divider"></div>
+    <div class="project-filters" id="project-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="banking">Investment Banking</button>
+      <button class="filter-btn" data-filter="pos">Meios de Pagamento</button>
+      <button class="filter-btn" data-filter="cloud">Cloud & Backend</button>
+      <button class="filter-btn" data-filter="embedded">Embedded</button>
+    </div>
     <div class="projects-grid">
 
-      <div class="project-card">
+      <div class="project-card" data-category="banking cloud">
         <div class="project-num">01</div>
         <div class="project-title">PLATAFORMA DE RELATÓRIOS DE PERFORMANCE</div>
-        <div class="project-company">BTG Pactual</div>
-        <p class="project-desc">Nova identidade visual da principal plataforma de consolidação de relatórios do banco, desenvolvida em colaboração direta com o time de UI/UX. Consolidação onshore e offshore.</p>
+        <div class="project-company">Investment Banking</div>
+        <p class="project-desc">Nova identidade visual de plataforma de consolidação de relatórios de alto volume, desenvolvida em colaboração direta com o time de UI/UX. Consolidação onshore e offshore.</p>
         <div class="project-stack">
           <span class="tag">Vue.js</span><span class="tag">Quasar</span><span class="tag">TypeScript</span><span class="tag">AWS Lambda</span><span class="tag">Python</span><span class="tag">Polars</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="banking cloud">
         <div class="project-num">02</div>
         <div class="project-title">ENGINE DE GERAÇÃO DE RELATÓRIOS (PDF)</div>
-        <div class="project-company">BTG Pactual</div>
-        <p class="project-desc">Implementação e otimização do fluxo da Lambda responsável por gerar relatórios via Puppeteer-core com Chromium, integrado ao Datadog para monitoramento de métricas.</p>
+        <div class="project-company">Investment Banking</div>
+        <p class="project-desc">Desenvolvimento de engine serverless para geração de relatórios em PDF de alta performance, utilizando conteinerização e monitoramento de métricas em tempo real.</p>
         <div class="project-stack">
           <span class="tag">AWS Lambda</span><span class="tag">Puppeteer</span><span class="tag">Chromium</span><span class="tag">Datadog</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="banking cloud">
         <div class="project-num">03</div>
-        <div class="project-title">MIGRAÇÃO E OTIMIZAÇÃO DE MENSAGERIA IBM MQ</div>
-        <div class="project-company">BTG Pactual</div>
-        <p class="project-desc">Implementação de fluxo de mensageria com alternância dinâmica entre múltiplos QueueManagers do IBM MQ, respeitando ordem de execução de tasks e threads em C#/.NET.</p>
+        <div class="project-title">MIGRAÇÃO E OTIMIZAÇÃO DE MENSAGERIA CORPORATIVA</div>
+        <div class="project-company">Investment Banking</div>
+        <p class="project-desc">Implementação de fluxo de mensageria com alternância dinâmica entre múltiplos brokers corporativos, respeitando ordem de execução de tasks e concorrência de threads em C#/.NET.</p>
         <div class="project-stack">
-          <span class="tag">IBM MQ</span><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Threading</span>
+          <span class="tag">Message Broker</span><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Threading</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="banking cloud">
         <div class="project-num">04</div>
-        <div class="project-title">MONITOR DE FILAS RABBITMQ</div>
-        <div class="project-company">BTG Pactual</div>
-        <p class="project-desc">Script Python de monitoramento de filas RabbitMQ com gerenciamento e armazenamento de mensagens em SQL para análise quantitativa, auxiliando migrações e descomissionamento.</p>
+        <div class="project-title">MONITOR DE FILAS DE MENSAGERIA</div>
+        <div class="project-company">Investment Banking</div>
+        <p class="project-desc">Ferramenta em Python para observabilidade de filas de mensageria, com coleta e persistência de métricas para análise quantitativa, auxiliando migrações e descomissionamento de fluxos legados.</p>
         <div class="project-stack">
           <span class="tag">Python</span><span class="tag">RabbitMQ</span><span class="tag">Pika</span><span class="tag">SQL</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="banking cloud">
         <div class="project-num">05</div>
         <div class="project-title">SSR E MIDDLEWARES PARA BFF</div>
-        <div class="project-company">BTG Pactual</div>
+        <div class="project-company">Investment Banking</div>
         <p class="project-desc">Implementação de Server-Side Rendering e middlewares para integração BFF com transmissão via fila e streaming sem bufferização, incluindo sistema de roles por nível de acesso.</p>
         <div class="project-stack">
           <span class="tag">SSR</span><span class="tag">Node.js</span><span class="tag">Middleware</span><span class="tag">Streaming</span><span class="tag">RBAC</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="pos embedded">
         <div class="project-num">06</div>
-        <div class="project-title">FLUXO DE INSERÇÃO DE CHAVES CRIPTOGRÁFICAS</div>
-        <div class="project-company">TecToy / PAX</div>
-        <p class="project-desc">Novo fluxo fabril de inserção de chaves de criptografia em terminais de pagamento com protocolos SSL/TLS via OpenSSL, eliminando necessidade de validação em processo produtivo.</p>
+        <div class="project-title">OTIMIZAÇÃO DE SEGURANÇA EM FLUXO FABRIL</div>
+        <div class="project-company">Fabricante de Hardware de Pagamentos</div>
+        <p class="project-desc">Implementação de protocolos de segurança (SSL/TLS) e otimização de fluxos de fábrica para terminais de pagamento (Linux), eliminando etapas de validação redundantes no processo produtivo.</p>
         <div class="project-stack">
           <span class="tag">C++14</span><span class="tag">C</span><span class="tag">OpenSSL</span><span class="tag">SSL/TLS</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="pos embedded">
         <div class="project-num">07</div>
         <div class="project-title">APP DE PAGAMENTO PARA TESTES DE TELECOM</div>
-        <div class="project-company">TecToy / PAX</div>
-        <p class="project-desc">Aplicativo funcional de pagamento para terminais Linux com biblioteca Setis (normas ABECS), módulos de telecomunicação, interface LVGL e fluxo completo de transação em C.</p>
+        <div class="project-company">Grande Player de Terminais POS</div>
+        <p class="project-desc">Aplicativo funcional de pagamento para terminais Linux em conformidade com normas do setor (ABECS), com módulos de telecomunicação, interface LVGL e fluxo completo de transação em C.</p>
         <div class="project-stack">
           <span class="tag">C</span><span class="tag">LVGL</span><span class="tag">ABECS</span><span class="tag">curl</span><span class="tag">OpenSSL</span>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-category="pos embedded">
         <div class="project-num">08</div>
-        <div class="project-title">CAMADA DE ABSTRAÇÃO PARA GRANDES PLAYERS</div>
-        <div class="project-company">TecToy / PAX</div>
-        <p class="project-desc">Desenvolvimento e homologação de projetos para terminais Linux, atuando na camada de abstração utilizada por grandes players do mercado de meios de pagamento.</p>
+        <div class="project-title">CAMADA DE ABSTRAÇÃO DE HARDWARE (HAL)</div>
+        <div class="project-company">Fabricante de Hardware de Pagamentos</div>
+        <p class="project-desc">Desenvolvimento e homologação de projetos para terminais Linux, atuando na camada de abstração de hardware (HAL) utilizada por grandes players do mercado de meios de pagamento.</p>
         <div class="project-stack">
           <span class="tag">C</span><span class="tag">C++</span><span class="tag">Linux</span><span class="tag">HAL</span><span class="tag">POS</span>
         </div>
@@ -1676,10 +2022,15 @@
   </div>
 </section>
 
+</div><!-- /view-projetos-pessoais -->
+
+<!-- ═══ VIEW: EDUCAÇÃO ═══ -->
+<div class="view" id="view-educacao" data-route="educacao">
+
 <!-- EDUCAÇÃO -->
 <section id="educacao">
   <div class="section-inner">
-    <div class="section-tag">// 06 — educação</div>
+    <div class="section-tag">Educação</div>
     <h2 class="section-title">FORMAÇÃO</h2>
     <div class="section-divider"></div>
     <div class="edu-grid">
@@ -1709,30 +2060,62 @@
   </div>
 </section>
 
-<!-- CONTATO / FOOTER -->
+</div><!-- /view-educacao -->
+
+<!-- ═══ VIEW: CONTATO ═══ -->
+<div class="view" id="view-contato" data-route="contato">
 <section id="contato">
-  <div class="footer-title reveal">VAMOS <span>CONSTRUIR</span><br>ALGO JUNTOS?</div>
-  <p class="footer-sub reveal">Disponível para projetos fullstack, consultoria em arquitetura de sistemas e oportunidades no setor financeiro e tech.</p>
-  <div class="footer-links reveal">
-    <a href="mailto:matheus.lpiress@gmail.com" class="footer-link">
-      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-      E-mail
-    </a>
-    <a href="tel:11930342036" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Telefone
-    </a>
-    <a href="https://www.linkedin.com/in/matheus-pires-b90247149/" target="_blank" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://github.com/MattLPires" target="_blank" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      GitHub
-    </a>
+  <div class="contato-inner">
+    <div class="section-tag reveal" style="text-align:center">Contato</div>
+    <div class="footer-title reveal">VAMOS <span>CONSTRUIR</span><br>ALGO JUNTOS?</div>
+    <p class="footer-sub reveal">Disponível para projetos fullstack, consultoria em arquitetura de sistemas e oportunidades no setor financeiro e tech. Chame no WhatsApp para uma resposta rápida.</p>
+
+    <div class="contato-cards">
+      <!-- WhatsApp (ação principal, abre conversa direta) -->
+      <a href="https://wa.me/5511930342036?text=Ol%C3%A1%20Matheus%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
+         target="_blank" rel="noopener" class="contato-card contato-card-primary reveal">
+        <div class="contato-card-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        </div>
+        <div class="contato-card-body">
+          <div class="contato-card-label">WhatsApp · Resposta rápida</div>
+          <div class="contato-card-value">+55 (11) 93034-2036</div>
+        </div>
+        <div class="contato-card-cta">Enviar mensagem →</div>
+      </a>
+
+      <!-- E-mail (apenas visível, não clicável) -->
+      <div class="contato-card reveal">
+        <div class="contato-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </div>
+        <div class="contato-card-body">
+          <div class="contato-card-label">E-mail</div>
+          <div class="contato-card-value">matheus.lpiress@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contato-social reveal">
+      <a href="https://www.linkedin.com/in/matheus-pires-b90247149/" target="_blank" rel="noopener" class="footer-link">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/MattLPires" target="_blank" rel="noopener" class="footer-link">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <div class="footer-copy">© 2026 Matheus Pires · São Paulo, Brasil</div>
   </div>
-  <div class="footer-copy">© 2026 Matheus Pires · São Paulo, Brasil</div>
 </section>
+</div><!-- /view-contato -->
+
+<!-- FLOATING BACK-TO-TOP -->
+<button id="fab-home" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <script>
   // ─── CURSOR GLOW ───
@@ -1756,10 +2139,69 @@
     if (saved) document.documentElement.setAttribute('data-theme', saved);
   } catch(e){}
 
-  // ─── NAV SCROLL STATE ───
+  // ─── NAV SCROLL STATE + PROGRESS + FAB ───
+  const progressBar = document.getElementById('scroll-progress');
+  const fabHome = document.getElementById('fab-home');
   window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    const y = window.scrollY;
+    document.getElementById('nav').classList.toggle('scrolled', y > 40);
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    fabHome.classList.toggle('show', y > 400);
   });
+
+  // ─── SPA ROUTER ───
+  const routes = ['home', 'experiencia', 'habilidades', 'projetos-pessoais', 'educacao', 'contato'];
+  const curtain = document.getElementById('route-curtain');
+  let currentRoute = null;
+
+  function parseRoute() {
+    const raw = (location.hash || '').replace(/^#\/?/, '').split('/')[0];
+    return routes.includes(raw) ? raw : 'home';
+  }
+
+  function renderRoute(route, animate = true) {
+    if (route === currentRoute) return;
+    const show = () => {
+      document.querySelectorAll('.view').forEach(v => {
+        v.classList.toggle('active', v.dataset.route === route);
+      });
+      // active nav state
+      document.querySelectorAll('[data-route-link]').forEach(a => {
+        a.classList.toggle('active', a.dataset.routeLink === route);
+      });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      currentRoute = route;
+      // re-run reveal/animations for the freshly shown view
+      requestAnimationFrame(() => triggerViewAnimations(route));
+    };
+
+    if (animate) {
+      curtain.classList.remove('wipe');
+      void curtain.offsetWidth; // reflow to restart animation
+      curtain.classList.add('wipe');
+      setTimeout(show, 280);
+    } else {
+      show();
+    }
+  }
+
+  function navigate(route) {
+    if (location.hash !== '#/' + route) {
+      location.hash = '#/' + route;
+    } else {
+      renderRoute(route);
+    }
+  }
+
+  document.querySelectorAll('[data-route-link]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navigate(link.dataset.routeLink);
+    });
+  });
+
+  window.addEventListener('hashchange', () => renderRoute(parseRoute()));
 
   // ─── MOBILE MENU ───
   function toggleMenu() {
@@ -1801,74 +2243,128 @@
   }
   setTimeout(type, 1200);
 
-  // ─── INTERSECTION OBSERVER ───
-  const observerOpts = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
-
-  function animateOnVisible(selector, delay = 0, stagger = 0) {
-    document.querySelectorAll(selector).forEach((el, i) => {
-      new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add('visible'), delay + i * stagger);
-          }
-        });
-      }, observerOpts).observe(el);
-    });
-  }
-
-  // Timeline items
-  animateOnVisible('.timeline-item', 0, 120);
-
-  // Skill bars
-  document.querySelectorAll('.skill-category').forEach((el, i) => {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          setTimeout(() => {
-            e.target.classList.add('visible');
-            e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-              bar.style.width = (parseFloat(bar.dataset.width) * 100) + '%';
-            });
-          }, i * 80);
-        }
-      });
-    }, observerOpts).observe(el);
-  });
-
-  // Lang bars
-  document.querySelectorAll('.lang-bar-fill').forEach(el => {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.width = (parseFloat(e.target.dataset.width) * 100) + '%';
-        }
-      });
-    }, { threshold: 0.5 }).observe(el);
-  });
-
-  // Project cards (professional)
-  animateOnVisible('.project-card', 0, 60);
-
-  // Personal project cards
-  animateOnVisible('.personal-card', 0, 80);
-
-  // Edu cards
-  animateOnVisible('.edu-card', 0, 120);
-
-  // Generic reveal
+  // ─── VIEW ANIMATIONS (re-triggered on route change) ───
+  // Prime generic reveal elements
   document.querySelectorAll('.reveal').forEach(el => {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOpts).observe(el);
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.7s, transform 0.7s';
   });
+
+  // Persistent reveal observer for elements OUTSIDE the routed views (e.g. footer),
+  // which are always mounted and won't be re-triggered by the router.
+  const persistentReveal = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        persistentReveal.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.closest('.view')) persistentReveal.observe(el);
+  });
+
+  function staggerReveal(scope, selector, cls, stagger, cb) {
+    scope.querySelectorAll(selector).forEach((el, i) => {
+      // reset for replay
+      el.classList.remove(cls);
+      setTimeout(() => {
+        el.classList.add(cls);
+        if (cb) cb(el);
+      }, 80 + i * stagger);
+    });
+  }
+
+  function triggerViewAnimations(route) {
+    const view = document.getElementById('view-' + route);
+    if (!view) return;
+
+    // Generic reveal
+    view.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 100 + i * 100);
+    });
+
+    // Lang bars
+    view.querySelectorAll('.lang-bar-fill').forEach(el => {
+      el.style.width = '0%';
+      setTimeout(() => { el.style.width = (parseFloat(el.dataset.width) * 100) + '%'; }, 300);
+    });
+
+    if (route === 'experiencia') {
+      staggerReveal(view, '.timeline-item', 'visible', 120);
+    }
+    if (route === 'habilidades') {
+      view.querySelectorAll('.skill-category').forEach((el, i) => {
+        el.classList.remove('visible');
+        el.querySelectorAll('.skill-bar-fill').forEach(b => b.style.width = '0%');
+        setTimeout(() => {
+          el.classList.add('visible');
+          el.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = (parseFloat(bar.dataset.width) * 100) + '%';
+          });
+        }, i * 90);
+      });
+    }
+    if (route === 'projetos-pessoais') {
+      staggerReveal(view, '.personal-card', 'visible', 90);
+      staggerReveal(view, '.project-card:not(.filtered-out)', 'visible', 50);
+    }
+    if (route === 'educacao') {
+      staggerReveal(view, '.edu-card', 'visible', 120);
+    }
+    if (route === 'home') {
+      staggerReveal(view, '.reveal', '__noop', 0);
+    }
+  }
+
+  // ─── PROJECT FILTERS ───
+  const filterWrap = document.getElementById('project-filters');
+  if (filterWrap) {
+    filterWrap.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      const filter = btn.dataset.filter;
+      filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('.projects-grid .project-card').forEach((card, i) => {
+        const cats = (card.dataset.category || '').split(' ');
+        const match = filter === 'all' || cats.includes(filter);
+        card.classList.toggle('filtered-out', !match);
+        if (match) {
+          card.classList.remove('visible');
+          setTimeout(() => card.classList.add('visible'), 30 + i * 40);
+        }
+      });
+    });
+  }
+
+  // ─── MAGNETIC CARD TILT ───
+  function attachTilt() {
+    document.querySelectorAll('.project-card, .personal-card').forEach(card => {
+      if (card.dataset.tilt) return;
+      card.dataset.tilt = '1';
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${px * 5}deg) rotateX(${-py * 5}deg) translateY(-2px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+  attachTilt();
+
+  // ─── INIT ROUTE ───
+  renderRoute(parseRoute(), false);
 </script>
 </body>
 </html>
